@@ -11930,9 +11930,9 @@ MultiHashHandler.prototype = HashHandler.prototype;
         return this.commandKeyBinding[key];
     };
 
-    this.handleKeyboard = function(data, hashId, keyString, keyCode) {
+    this.handleKeyboard = function(data, hashId, keyString, keyCode, e) {
         if (keyCode < 0) return;
-        var key = KEY_MODS[hashId] + keyString;
+        var key = KEY_MODS[hashId] + e.key;
         var command = this.commandKeyBinding[key];
         if (data.$keyChain) {
             data.$keyChain += " " + key;
@@ -11947,7 +11947,7 @@ MultiHashHandler.prototype = HashHandler.prototype;
         }
         
         if (data.$keyChain) {
-            if ((!hashId || hashId == 4) && keyString.length == 1)
+            if ((!hashId || hashId == 4) && e.key.length == 1)
                 data.$keyChain = data.$keyChain.slice(0, -key.length - 1); // wait for input
             else if (hashId == -1 || keyCode > 0)
                 data.$keyChain = ""; // reset keyChain
