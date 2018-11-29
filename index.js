@@ -11935,7 +11935,7 @@ MultiHashHandler.prototype = HashHandler.prototype;
         //not working for e.g. arrow keys...
       //we only want cmd++/ctrl++ to work properly across browsers...
         if (e && e.key) {
-            if (KEY_MODS[hashId] === 'cmd' || KEY_MODS[hashId] === 'ctrl') {
+            if (KEY_MODS[hashId] === 'cmd-' || KEY_MODS[hashId] === 'ctrl-') {
                 if (e.key === '+') {
                   keyString = '+'
                 }
