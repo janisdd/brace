@@ -11932,9 +11932,10 @@ MultiHashHandler.prototype = HashHandler.prototype;
 
     this.handleKeyboard = function(data, hashId, keyString, keyCode, e) {
         if (keyCode < 0) return;
-        if (e && e.key) {
-          keyString = e.key
-        }
+        //not working for e.g. arrow keys...
+        // if (e && e.key) {
+        //   keyString = e.key
+        // }
         var key = KEY_MODS[hashId] + keyString;
         var command = this.commandKeyBinding[key];
         if (data.$keyChain) {
