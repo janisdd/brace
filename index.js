@@ -11933,9 +11933,14 @@ MultiHashHandler.prototype = HashHandler.prototype;
     this.handleKeyboard = function(data, hashId, keyString, keyCode, e) {
         if (keyCode < 0) return;
         //not working for e.g. arrow keys...
-        // if (e && e.key) {
-        //   keyString = e.key
-        // }
+      //we only want cmd++/ctrl++ to work properly across browsers...
+        if (e && e.key) {
+            if (KEY_MODS[hashId] === 'cmd' || KEY_MODS[hashId] === 'ctrl') {
+                if (e.key === '+') {
+                  keyString = '+'
+                }
+            }
+        }
         var key = KEY_MODS[hashId] + keyString;
         var command = this.commandKeyBinding[key];
         if (data.$keyChain) {
